@@ -373,7 +373,7 @@
      * @since 3.5
      */
     function check_delete_for_feed_source( $source_id = NULL ) {
-        if ( ! current_user_can( 'delete_feeds' ) ) return;
+        if ( ! current_user_can( 'delete_feed_sources' ) ) return;
         // then we need to check the GET data for the request
         if ( isset( $_GET['purge-feed-items'] ) ) {
             $source_id = $_GET['purge-feed-items'];
@@ -469,7 +469,7 @@
             $response->setAjaxData($kFeedSourceId, $id);
 
             if (!current_user_can('edit_feed_sources')) {
-                throw new Exception($wprss->__(array('Could not schedule fetch for source #%1$s: user must have sufficient priviledges', $id)));
+                throw new Exception($wprss->__(array('Could not schedule fetch for source #%1$s: user must have sufficient privileges', $id)));
             }
 
             // Verify admin referer
